@@ -1,35 +1,22 @@
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
-import java.io.Serializable;
+
+// Dette er et eksempel på serialiseing med XML-fil i sin enkleste form
+// med beans' XML encoder. Der kan ikke laves tags, men det kræver ikke yderligere biblioteker.
+// Bemærk, at modelklasserne skal have:
+// - set og get metoder med korrekte navne og paramtre
+// - en tom konstruktør (!)
+// EK nov 2026
 
 public class XmlSerializableDemo {
 
-    // Bean-klasse der implementerer Serializable
-    public static class Person implements Serializable {
-        private String navn;
-        private int alder;
-
-        public Person() { } // påkrævet: default-konstruktør
-
-        public Person(String navn, int alder) {
-            this.navn = navn;
-            this.alder = alder;
-        }
-
-        public String getNavn() { return navn; }
-        public void setNavn(String navn) { this.navn = navn; }
-        public int getAlder() { return alder; }
-        public void setAlder(int alder) { this.alder = alder; }
-
-        @Override
-        public String toString() {
-            return "Person{navn='" + navn + "', alder=" + alder + "}";
-        }
-    }
 
     public static void main(String[] args) throws IOException {
-        Person p = new Person("Erik", 42);
+        Person p = new Person(42,"Erik");
+        Adresse a = new Adresse("Godvej", 5666, "Sydby");
+        p.tilknytAdresse(a);
+        p.tilknytAdresse(new Adresse("Langgade", 4800, "Nykøbing F"));
 
         // 1) Gem som XML
         try (XMLEncoder enc = new XMLEncoder(
@@ -37,6 +24,8 @@ public class XmlSerializableDemo {
             enc.writeObject(p);
         }
         System.out.println("Gemt i person.xml");
+
+        // -----
 
         // 2) Indlæs fra XML
         Person laast;

@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="23.0.2" class="java.beans.XMLDecoder">
- <object class="XmlSerializableDemo$Person">
-  <void property="alder">
+ <object class="Person" id="Person0">
+  <void property="adresser">
+   <void method="add">
+    <object class="Adresse">
+     <void property="by">
+      <string>Sydby</string>
+     </void>
+     <void property="postnr">
+      <int>5666</int>
+     </void>
+     <void property="vej">
+      <string>Godvej</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="Adresse">
+     <void property="by">
+      <string>Nykøbing F</string>
+     </void>
+     <void property="postnr">
+      <int>4800</int>
+     </void>
+     <void property="vej">
+      <string>Langgade</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="id">
    <int>42</int>
   </void>
   <void property="navn">
