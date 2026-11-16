@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="23.0.2" class="java.beans.XMLDecoder">
+ <object class="XmlSerializableDemo$Person">
+  <void property="alder">
+   <int>42</int>
+  </void>
+  <void property="navn">
+   <string>Erik</string>
+  </void>
+ </object>
+</java>
